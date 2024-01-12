@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lessons</title>
+</head>
+<body>
+  <h1>Lessons</h1>
+  <ul>
+    {% for lesson in lesson_list %}
+      <li>
+        <a href="{% url "tutoring:lesson-detail" lesson.id %}">{{ lesson.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

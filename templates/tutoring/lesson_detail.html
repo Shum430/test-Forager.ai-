@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ lesson.name }}</title>
+</head>
+<body>
+  <h1>{{ lesson.name }} <h4>Teacher: {{ lesson.teacher.first_name }} {{ lesson.teacher.last_name }}</h4>
+  </h1>
+  <h4>Attended pupils</h4>
+  <ul>
+    {% for pupil in lesson.pupils.all %}
+      <li>{{ pupil }}</li>
+    {% endfor %}
+  </ul>
+  <h4>{{ lesson.time|date:"F j, Y H:i" }}</h4>
+
+</body>
+</html>

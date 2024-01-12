@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our School</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .column {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    <form action="{% url 'tutoring:pupil-logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <form action="{% url 'tutoring:pupil-login' %}" method="get">
+        <button type="submit">Login</button>
+    </form>
+{% endif %}
+<a href="{% url 'tutoring:pupil-registration' %}" class="btn btn-primary registration-btn">Register</a>
+<h1 class="text-center p-4">
+   Welcome to our school
+  </h1>
+<div class="container">
+    <div class="row mx-0">
+        <div class="col-sm-4 column text-center">
+            <h2>Teachers</h2>
+            <ul>
+              {% for teacher in teachers %}
+                <li>{{ teacher.first_name }}</li>
+              {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-sm-4 column text-center">
+            <h2>Pupils</h2>
+            <ul>
+              {% for pupil in pupils %}
+                <li>{{ pupil.first_name }}</li>
+              {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-sm-4 column text-center">
+          <h2>
+            <a href="{% url "tutoring:lesson-list" %}">Lessons</a>
+          </h2>
+          <ul>
+              {% for lesson in lessons %}
+                <li>{{ lesson.name }}</li>
+              {% endfor %}
+          </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
