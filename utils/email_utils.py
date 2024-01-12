@@ -2,8 +2,8 @@ import requests
 
 
 def validate_email_with_hunter(email):
-    api_key = '304d0451e2c8301d593dcc4b490b52555c753ce8'
-    api_endpoint = 'https://api.hunter.io/v2/email-verifier'
+    api_key = ''
+    api_endpoint = ''
 
     params = {
         'email': email,
